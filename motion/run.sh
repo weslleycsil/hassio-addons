@@ -19,6 +19,7 @@ MOVIEOUTPUT=$(jq --raw-output ".movie_output" $CONFIG_PATH)
 MOVIENAME=$(jq --raw-output ".movie_name" $CONFIG_PATH)
 WEBCONTROLLOCAL=$(jq --raw-output ".webcontrol_local" $CONFIG_PATH)
 WEBCONTROLHTML=$(jq --raw-output ".webcontrol_html" $CONFIG_PATH)
+DELETE_IMAGES_INTERVAL=$(jq --raw-output ".delete_images_interval" $CONFIG_PATH)
 
 
 echo "[Info] Show connected usb devices"
@@ -42,5 +43,18 @@ if [ ! -f "$CONFIG" ]; then
 	sed -i "s|%%WEBCONTROLHTML%%|$WEBCONTROLHTML|g" /etc/motion.conf
 	CONFIG=/etc/motion.conf
 fi
+
+if [ ! -f "$CONFIG" ]; then
+	echo "Copy script to delete images olds"
+	cp /delete_images.sh /share/motion/delete_images.sh
+	
+	sed -i "s|%%DELETE_IMAGES_INTERVAL%%|$DELETE_IMAGES_INTERVAL|g" /share/motion/delete_images.sh
+fi
+
+chmod a+x /share/motion/delete_images.sh
+
+echo "[Info] Run delete_images"
+/share/motion/delete_images.sh &
+
 # start server
 motion -c $CONFIG
