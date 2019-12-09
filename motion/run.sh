@@ -26,6 +26,7 @@ echo "[Info] Show connected usb devices"
 ls -al /dev/video*
 
 if [ ! -f "$CONFIG" ]; then
+	echo "[Info] Config motion"
 	sed -i "s|%%VIDEODEVICE%%|$VIDEODEVICE|g" /etc/motion.conf
 	sed -i "s|%%INPUT%%|$INPUT|g" /etc/motion.conf
 	sed -i "s|%%WIDTH%%|$WIDTH|g" /etc/motion.conf
@@ -41,14 +42,15 @@ if [ ! -f "$CONFIG" ]; then
 	sed -i "s|%%MOVIENAME%%|$MOVIENAME|g" /etc/motion.conf
 	sed -i "s|%%WEBCONTROLLOCAL%%|$WEBCONTROLLOCAL|g" /etc/motion.conf
 	sed -i "s|%%WEBCONTROLHTML%%|$WEBCONTROLHTML|g" /etc/motion.conf
-	CONFIG=/etc/motion.conf
 fi
 
 if [ ! -f "$CONFIG" ]; then
-	echo "Copy script to delete images olds"
+	echo "[Info] Config Script delete_images"
 	cp /delete_images.sh /share/motion/delete_images.sh
 	
 	sed -i "s|%%DELETE_IMAGES_INTERVAL%%|$DELETE_IMAGES_INTERVAL|g" /share/motion/delete_images.sh
+
+	CONFIG=/etc/motion.conf
 fi
 
 chmod a+x /share/motion/delete_images.sh
