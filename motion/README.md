@@ -9,6 +9,7 @@ Currently only working for the first webcam found at /dev/video0
 ### Changelog
 |Version|Changes|
 |-------|-------|
+|2.4.1  | Script to delete old files |
 |2.4.0  | Bugs Fixs and image base debian:buster |
 |2.1.1  | Added needed architectures |
 |2.1    | Added webcontrol configuration |
@@ -152,5 +153,10 @@ Restrict control connections to localhost only
 
 ##### webcontrol_html
 *on*
+
+##### delete_images_interval
+*5*
+
+Interval for deleting old image files in minutes
 
 Output for http server, select off to choose raw text plain
