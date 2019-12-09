@@ -49,7 +49,7 @@ if [ ! -f "$CONFIG" ]; then
 	cp /delete_images.sh /share/motion/delete_images.sh
 
 	REMOVECMD='find '$TARGETDIR'/ -type f ! -name "lastsnap.jpg" -exec rm -rf {} \\;'
-	
+	echo REMOVECMD
 	sed -i "s|%%PLACEHOLDER%%|$REMOVECMD|g" /share/motion/delete_images.sh
 	sed -i "s|%%DELETE_IMAGES_INTERVAL%%|$DELETE_IMAGES_INTERVAL|g" /share/motion/delete_images.sh
 
