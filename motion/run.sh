@@ -20,7 +20,12 @@ MOVIENAME=$(jq --raw-output ".movie_name" $CONFIG_PATH)
 WEBCONTROLLOCAL=$(jq --raw-output ".webcontrol_local" $CONFIG_PATH)
 WEBCONTROLHTML=$(jq --raw-output ".webcontrol_html" $CONFIG_PATH)
 DELETE_IMAGES_INTERVAL=$(jq --raw-output ".delete_images_interval" $CONFIG_PATH)
-
+#config mqtt
+MQTT_SERVER=$(jq --raw-output ".mqtt_server" $CONFIG_PATH)
+MQTT_PORT=$(jq --raw-output ".mqtt_server_port" $CONFIG_PATH)
+MQTT_USER=$(jq --raw-output ".mqtt_user" $CONFIG_PATH)
+MQTT_PASS=$(jq --raw-output ".mqtt_password" $CONFIG_PATH)
+MQTT_TOPIC=$(jq --raw-output ".mqtt_topic" $CONFIG_PATH)
 
 echo "[Info] Show connected usb devices"
 ls -al /dev/video*
@@ -42,6 +47,11 @@ if [ ! -f "$CONFIG" ]; then
 	sed -i "s|%%MOVIENAME%%|$MOVIENAME|g" /etc/motion.conf
 	sed -i "s|%%WEBCONTROLLOCAL%%|$WEBCONTROLLOCAL|g" /etc/motion.conf
 	sed -i "s|%%WEBCONTROLHTML%%|$WEBCONTROLHTML|g" /etc/motion.conf
+	sed -i "s|%%MQTT_SERVER%%|$MQTT_SERVER|g" /etc/motion.conf
+	sed -i "s|%%MQTT_PORT%%|$MQTT_PORT|g" /etc/motion.conf
+	sed -i "s|%%MQTT_USER%%|$MQTT_USER|g" /etc/motion.conf
+	sed -i "s|%%MQTT_PASS%%|$MQTT_PASS|g" /etc/motion.conf
+	sed -i "s|%%MQTT_TOPIC%%|$MQTT_TOPIC|g" /etc/motion.conf
 fi
 
 if [ ! -f "$CONFIG" ]; then
