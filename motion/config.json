@@ -37,7 +37,10 @@
 		"movie_name": "%v-%Y%m%d%H%M%S",
 		"webcontrol_local": "on",
 		"webcontrol_html": "on",
-		"delete_images_interval": "5"
+		"delete_images_interval": "5",
+		"mqtt_server": "0.0.0.0",
+		"mqtt_server_port": "1883",
+		"mqtt_topic": "/motion/camera/",
 	},
 	"schema": {
 	  "config": "str",
@@ -56,6 +59,9 @@
 	  	"movie_name": "str",
 		"webcontrol_local": "str",
 		"webcontrol_html": "str",
-		"delete_images_interval": "str"
+		"delete_images_interval": "str",
+		"mqtt_server": "str",
+		"mqtt_server_port": "str",
+		"mqtt_topic": "str",
 	}
 }
