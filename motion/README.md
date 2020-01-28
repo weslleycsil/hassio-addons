@@ -9,6 +9,7 @@ Currently only working for the first webcam found at /dev/video0
 ### Changelog
 |Version|Changes|
 |-------|-------|
+|2.5.0  | add mosquitto pub to motion detection |
 |2.4.1  | Script to delete old files |
 |2.4.0  | Bugs Fixs and image base debian:buster |
 |2.1.1  | Added needed architectures |
@@ -160,3 +161,13 @@ Restrict control connections to localhost only
 Interval for deleting old image files in minutes
 
 Output for http server, select off to choose raw text plain
+
+##### mqtt_server
+
+##### mqtt_server_port
+
+##### mqtt_user
+
+##### mqtt_password
+
+##### mqtt_topic

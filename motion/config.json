@@ -40,7 +40,9 @@
 		"delete_images_interval": "5",
 		"mqtt_server": "0.0.0.0",
 		"mqtt_server_port": "1883",
-		"mqtt_topic": "/motion/camera/",
+		"mqtt_user": "mqtt",
+		"mqtt_password": "mqtt",
+		"mqtt_topic": "motion/camera/"
 	},
 	"schema": {
 	  "config": "str",
@@ -62,6 +64,8 @@
 		"delete_images_interval": "str",
 		"mqtt_server": "str",
 		"mqtt_server_port": "str",
-		"mqtt_topic": "str",
+		"mqtt_user": "str",
+		"mqtt_password": "str",
+		"mqtt_topic": "str"
 	}
 }

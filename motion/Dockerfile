@@ -2,7 +2,8 @@ FROM debian:buster
 
 RUN apt-get update && apt-get install -q -y --no-install-recommends \
     motion \
-    jq
+    jq \
+    mosquitto-clients
 
 # Copy data
 COPY run.sh /
